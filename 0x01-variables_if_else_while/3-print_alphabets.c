@@ -5,21 +5,18 @@
  * Description: prints the alphabet in lowercase
  * Return: Always 0 (Success)
  */
-
-int main(void);
+int main(void)
 
 {
-        int ch;
+	int x;
 
-        for (ch = 'a'; ch <= 'z'; ch++)
-
+	for (x = 'a'; x <= 'z'; x++)
 	{
-		putchar(ch);
+		putchar(x);
 	}
-
-	for (ch = 'A'; ch <= 'Z'; ch++)
-	}
-		putchar(ch);
+	for (x = 'A'; x <= 'Z'; x++)
+	{
+		putchar(x);
 	}
 	putchar('\n');
 	return (0);
