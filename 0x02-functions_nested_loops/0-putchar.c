@@ -1,26 +1,22 @@
 #include "main.h"
+
 /**
- * main - print _putchar
- * project by p
- * Return: 0
+ * main - would print out _putchar
+ * Return: would return 0 if executed currently, otherwise 1
  */
 
-int main(void);
-
+int main(void)
 {
+	_putchar('_');
+	_putchar('p');
+	_putchar('u');
+	_putchar('t');
+	_putchar('c');
+	_putchar('h');
+	_putchar('a');
+	_putchar('r');
+	_putchar('\n');
 
-_putchar('_');
+	return (0);
 
-_putchar('p');
-
-_putchar('u');
-
-_putchar('t');
-
-_putchar('c');
-
-_putchar('h');
-
-_putchar('a');
-return (0);
 }
