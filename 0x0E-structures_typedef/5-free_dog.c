@@ -1,7 +1,7 @@
 #include <stdlib.h>
 #include "dog.h"
-/** 
- *free_dog - free memory 
+/**
+ * free_dog - frees the dog
  *@d: array Description: Free memory for struct
  */
 
