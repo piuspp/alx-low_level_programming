@@ -2,7 +2,7 @@
 #include <stdio.h>
 
 /**
- * 24_hours - prints every minute of the day
+ * jack_bauer - prints every minute of the day
  * @i,j,k,x: integer variable
  * Return: always 0 (success)
  */
