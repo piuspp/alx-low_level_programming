@@ -17,10 +17,9 @@ int main(void)
 		if ((i % 3 == 0) || (i % 5 == 0))
 		{
 			j = j + i;
-			putchar(j + '0');
 		}
 	}
-
+	printf("%d\n", j);
 	return (0);
 }
 
