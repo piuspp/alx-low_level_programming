@@ -1,38 +1,47 @@
 #include "lists.h"
+#include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 
 /**
- * *add_node - adds a node to a linked list head
- * @head: linked list head
- * @str: string element of the linked list
- * Return: number of elements
+ * _strlen - size of string
+ * @str: string to get size of
+ * Return: size of string
+ */
+int _strlen(const char *str)
+{
+	int i;
+
+	for (i = 0; str[i]; i++)
+		;
+
+	return (i);
+}
+/**
+ * add_node - adds a new node at the beginning of a list_t list
+ * @head: struct list_t, first node
+ * @str: needs to be duplicated
+ * Return: new list_t
  */
 
 list_t *add_node(list_t **head, const char *str)
 {
-	list_t *new_node;
-	int len_str;
+	list_t *new;
+	char *string = strdup(str);
 
-	new_node = (list_t *) malloc(sizeof(list_t));
+	if (!string)
+		return (NULL);
 
-	if (new_node == NULL)
+	new = malloc(sizeof(list_t));
+	if (!new)
 	{
-		free(new_node);
+		free(string);
 		return (NULL);
 	}
+	new->str = string;
+	new->len = _strlen(string);
+	new->next = *head;
 
-	new_node->str = strdup(str);
-	if (new_node->str == NULL)
-	{
-		free(new_node);
-		return (NULL);
-	}
-	for (len_str = 0; str[len_str] != '\0';  len_str++)
-	;
-
-	new_node->len = len_str;
-	new_node->next = *head;
-	*head = new_node;
-
-	return (new_node);
+	*head = new;
+	return (new);
 }
