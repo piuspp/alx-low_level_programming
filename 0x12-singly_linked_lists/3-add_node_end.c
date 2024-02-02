@@ -1,45 +1,57 @@
 #include "lists.h"
-#include <string.h>
 #include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
 /**
- * add_node_end - add a node at the end of a linked list
- * @head: The character to print
- * @str: string for the new node
- *
- * Return: new node
+ * _strlen - size of string
+ * @str: string to get size of
+ * Return: size of string
  */
-list_t *add_node_end(list_t **head, const char *str)
+int _strlen(const char *str)
 {
-	list_t *current;
-	list_t *new_node;
-	int c;
+	int i;
 
-	current = *head;
-	while (current && current->next != NULL)
-		current = current->next;
-
-	for (c = 0; str[c] != '\0'; c++)
+	for (i = 0; str[i]; i++)
 		;
 
-	new_node = malloc(sizeof(list_t));
-	if (new_node == NULL)
-	{
-		free(new_node);
-		return (NULL);
-	}
-	new_node->str = strdup(str);
-	if (new_node->str == NULL)
-	{
-		free(new_node);
-		return (NULL);
-	}
-	new_node->len = c;
-	new_node->next = NULL;
+	return (i);
+}
+/**
+ * add_node_end - adds a new node at the end of a list_t list
+ * @head: struct list_t, node
+ * @str: needs to be duplicated
+ * Return: new list_t
+ */
 
-	if (current)
-		current->next = new_node;
-	else
-		*head = new_node;
-	return (new_node);
+list_t *add_node_end(list_t **head, const char *str)
+{
+	list_t *new, *last;
+	char *string = strdup(str);
+
+	if (!string)
+		return (NULL);
+
+	new = malloc(sizeof(list_t));
+	if (!new)
+	{
+		free(string);
+		return (NULL);
+	}
+
+	new->str = string;
+	new->len = _strlen(string);
+	new->next = NULL;
+
+	if (*head == NULL)
+	{
+		*head = new;
+		return (new);
+	}
+
+	for (last = *head; last->next != NULL; last = last->next)
+		;
+
+	last->next = new;
+	return (new);
 }
