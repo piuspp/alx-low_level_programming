@@ -1,23 +1,17 @@
 #include "lists.h"
-#include <stdio.h>
 
 /**
- * print_listint - print elements of linkedlist
- * @h: head
- * Return: length of a string
+ * print_listint - print the elements of linked list and return # of elements
+ * @h: pointer to the first element
+ * Return: number of elements
  */
 
 size_t print_listint(const listint_t *h)
 {
-	size_t no_nodes = 0;
+	int i;
 
-	const listint_t *currentv = h;
+	for (i = 0; h; h = (*h).next, i++)
+		printf("%d\n", (*h).n);
 
-	while (currentv != NULL)
-	{
-		printf("%i\n", currentv->n);
-		currentv = currentv->next;
-		no_nodes++;
-	}
-	return (no_nodes);
+	return (i);
 }
