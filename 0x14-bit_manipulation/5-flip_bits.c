@@ -1,26 +1,26 @@
-#include "lists.h"
+#include "main.h"
 
 /**
- * free_listint2 - frees a listint_t list
- * Description: at the end, the head will point to NULL.
- * So, as we know the tail always points to NULL, we will
- * be moving a temp pointer, free its memory if not NULL
- * Untill we reach the tail
- * @head: head of linked list
+ * flip_bits - number of different bits between two numbers
+ * @n: first number
+ * @m: second number
+ *
+ * Return: number of bits you would need to flip
+ * to get from one number to another.
  */
-
-void free_listint2(listint_t **head)
+unsigned int flip_bits(unsigned long int n, unsigned long int m)
 {
-	listint_t *current;
+	unsigned long int diff, check;
+	unsigned int count, i;
 
-	if (head == NULL)
-		return;
-
-	while (*head != NULL)
+	count = 0;
+	check = 1;
+	diff = n ^ m;
+	for (i = 0; i < (sizeof(unsigned long int) * 8); i++)
 	{
-		current = *head;
-		*head = (*head)->next;
-		free(current);
+		if (check == (diff & check))
+			count++;
+		check <<= 1;
 	}
-
+	return (count);
 }

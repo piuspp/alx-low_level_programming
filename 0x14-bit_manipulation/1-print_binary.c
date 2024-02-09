@@ -1,15 +1,19 @@
 #include "main.h"
 
 /**
-  * get_bit - returns the value of a bit at a given index
-  * @n: unsigned long int to search
-  * @index: index to return bit
-  * Return: the value of the bit at index or -1 if error
-  */
-
-int get_bit(unsigned long int n, unsigned int index)
+ * _pow - calculates (base ^ power)
+ * @base: base of the exponent
+ * @power: power of the exponent
+ *
+ * Return: value of (base ^ power)
+ */
+unsigned long int _pow(unsigned int base, unsigned int power)
 {
-	if (index > 63)
-		return (-1);
-	return ((n >> index) & 1);
+	unsigned long int num;
+	unsigned int i;
+
+	num = 1;
+	for (i = 1; i <= power; i++)
+		num *= base;
+	return (num);
 }
